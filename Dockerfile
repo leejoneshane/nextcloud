@@ -1,3 +1,3 @@
 FROM nextcloud
 
-ADD docker-entrypoint.sh /entrypoint.sh
+COPY docker-entrypoint.sh /entrypoint.sh
