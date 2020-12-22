@@ -1,0 +1,24 @@
+{ "translations": {
+  "Social login": "Social login",
+  "Enabled": "Aktiviert",
+  "Unknown %s provider: \"%s\"": "Unbekannter %s Anbieter: \"%s\"",
+  "Auto creating new users is disabled": "Die automatische Erstellung neuer Benutzer is deaktiviert",
+  "This account already connected": "Dieses Konto ist bereits verbunden",
+  "Provider name cannot be empty": "Der Anbietername muss ausgefüllt sein",
+  "Duplicate provider name \"%s\"": "Der Anbietername \"%s\" existiert bereits",
+  "Invalid provider name \"%s\". Allowed characters \"0-9a-z_.@-\"": "Ungültiger Anbietername \"%s\". Es sind nur die folgenden Zeichen erlaubt \"0-9a-z_.@-\"",
+  "Social login connect": "Externe Konten verknüpfen",
+  "Available providers": "Verfügbare Anbieter",
+  "Social login connect is disabled": "Social login ist deaktiviert",
+  "Email already registered": "Die E-Mail Adresse ist bereits registiert",
+  "Disable password confirmation on settings change": "Deaktiviere Passwortbestätigung bei der Änderung von Einstellungen",
+  "Internal name": "Interner Name",
+  "Title": "Name",
+  "Authorize url": "URL zur Authentifizierung",
+  "User info URL (optional)": "URL für Benutzerinformationen (optional)",
+  "Default group": "Standard Gruppe für Benutzer",
+  "Add group mapping": "Neue Gruppe zuweisen",
+  "Custom OAuth2": "Eigener OAuth Server",
+  "Log in with %s": "Anmelden mit %s"
+},"pluralForm" :"nplurals=2; plural=(n > 1);"
+}
