@@ -66,6 +66,9 @@ class Tpedu extends OAuth2
             $userProfile->data['groups'] = ['學生', $data->get('class')];
         } else {
             $userProfile->identifier = $data->get('teacherId');
+            if ($data->get('isAdmin') == 'yes') {
+                $userProfile->data['groups'][] = 'admin';
+            }
             $userProfile->data['groups'][] = '教師';
             $units = $data->get('unit')->$limit;
             foreach ($units as $dept) {
