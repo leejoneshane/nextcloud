@@ -8,8 +8,8 @@
 namespace Hybridauth\Provider;
 
 use Hybridauth\Adapter\OAuth2;
-use Hybridauth\Exception\UnexpectedApiResponseException;
 use Hybridauth\Data;
+use Hybridauth\Exception\UnexpectedApiResponseException;
 use Hybridauth\User;
 
 /**
@@ -50,11 +50,12 @@ class Tpedu extends OAuth2
         $response = $this->apiRequest('profile');
 
         $data = new Data\Collection($response);
-	$org = $data->exists('organization') ? $data->get('organization') : false;
+        $org = $data->exists('organization') ? $data->get('organization') : false;
+        $limit = getenv('ORG', true) ?: 'meps';
 
         if ($data->exists('error') || !$org) {
             throw new UnexpectedApiResponseException('Provider API returned an unexpected response.');
-        } elseif (!property_exists($org, 'meps') || $data->get('role') == '家長') {
+        } elseif (!property_exists($org, $limit) || $data->get('role') == '家長') {
             throw new UnexpectedApiResponseException('只有國語實小的師生才能登入！');
         }
 
@@ -66,10 +67,10 @@ class Tpedu extends OAuth2
         } else {
             $userProfile->identifier = $data->get('teacherId');
             $userProfile->data['groups'][] = '教師';
-	    $units = $data->get('unit')->meps;
-	    foreach ($units as $dept) {
-		$userProfile->data['groups'][] = $dept->name;
-	    }
+            $units = $data->get('unit')->$limit;
+            foreach ($units as $dept) {
+                $userProfile->data['groups'][] = $dept->name;
+            }
         }
         $userProfile->displayName = $data->get('name');
         $userProfile->gender = $data->get('gender');
