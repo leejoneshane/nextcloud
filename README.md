@@ -2,14 +2,19 @@
 # leejoneshane/nextcloud
 
 專為臺北市教育局校園單一身份驗證設計的 nextcloud，並且解決了官方容器無法重啟的問題！
+
 若要讓系統實際上線服務，請務必修改環境變數，在 docker-compose.yml 檔案中，與網域和密碼相關的所有參數。
 
 ## nextcloud-social-login 模組 Tpedu Provider 說明
 
 容器啟動後，請以管理員身份登入（帳號密碼於 docker-compose.yml 中設定）
+
 在管理選單的「應用程式」頁面中，可以發現網站已經自動啟用「社交登入」模組，但在完成設定之前並沒有作用。
+
 從管理選單點選「設定」頁面，找到「管理」設定（在「個人」設定的下方）
+
 輸入您向 ldap.tp.edu.tw 申請的介接專案編號與密鑰，儲存設定後，可以在登入頁面看到多一個「校園單一身份驗證」的按鈕，點此按鈕即可！
+
 如果想要讓登入頁面直接改為 ldap.tp.edu.tw 的登入頁面，請在 /var/www/html/config/config.php 中加入：
 
     'social_login_auto_redirect' => true
