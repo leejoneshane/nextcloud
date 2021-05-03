@@ -5,7 +5,7 @@ ENV version v4.5.0
 
 ADD docker-entrypoint.sh /entrypoint.sh
 
-RUN apt-get update && apt-get -y install sudo mc vim sed && apt-get clean \
+RUN apt-get update && apt-get -y install sudo mc sed && apt-get clean \
     && cd /root \
     && curl -O https://github.com/zorn-v/nextcloud-social-login/releases/download/$version/release.tar.gz \
     && tar zxvf release.tar.gz \ 
