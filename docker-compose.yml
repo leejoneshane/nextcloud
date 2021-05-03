@@ -99,6 +99,8 @@ services:
       MAIL_DOMAIN: xxxps.tp.edu.tw
       APACHE_DISABLE_REWRITE_IP: 1
       TRUSTED_PROXIES: 10.0.2.0/24
+      PHP_MEMORY_LIMIT: -1
+      PHP_UPLOAD_LIMIT: 2048M
     volumes:
     - /nas_storage/nextcloud/config:/var/www/html/config
     - /nas_storage/nextcloud/data:/var/www/html/data
