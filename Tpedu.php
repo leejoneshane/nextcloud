@@ -56,7 +56,7 @@ class Tpedu extends OAuth2
         if ($data->exists('error') || !$org) {
             throw new UnexpectedApiResponseException('Provider API returned an unexpected response.');
         } elseif (!property_exists($org, $limit) || $data->get('role') == '家長') {
-            throw new UnexpectedApiResponseException('只有國語實小的師生才能登入！');
+            throw new UnexpectedApiResponseException('只有'.$limit.'的師生才能登入！');
         }
 
         $userProfile = new User\Profile();
