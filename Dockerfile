@@ -11,7 +11,7 @@ RUN apt-get update && apt-get -y install sudo mc vim sed && apt-get clean \
     && tar zxvf release.tar.gz \ 
     && sed -ri "/DEFAULT_PROVIDERS.*/a 'Tpedu'," \
            /root/sociallogin/lib/Service/ProviderService.php \
-    && sed -ri "/Telegram.*/a 'Hybridauth\\Provider\\Tpedu' => $vendorDir . '/hybridauth/hybridauth/src/Provider/Tpedu.php'," \
+    && sed -ri "/Telegram.*/a 'Hybridauth\\\\\\\\Provider\\\\\\\\Tpedu' => $vendorDir . '/hybridauth/hybridauth/src/Provider/Tpedu.php'," \
            /root/sociallogin/3rdparty/composer/autoload_classmap.php
 
 ADD Tpedu.php /root/sociallogin/3rdparty/hybridauth/hybridauth/src/Provider/Tpedu.php
