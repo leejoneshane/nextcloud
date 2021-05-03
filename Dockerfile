@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y git sed \
     && sed -ri "/DEFAULT_PROVIDERS.*/a 'Tpedu'," \
            /root/sociallogin/lib/Service/ProviderService.php
 
-ADD Tpedu.php /root/sociallogin/3rdparty/hydridauth/hybridauth/src/Provider/Tpedu.php
+ADD Tpedu.php /root/sociallogin/3rdparty/hybridauth/hybridauth/src/Provider/Tpedu.php
 RUN chmod +x /entrypoint.sh \
     && chown -R www-data:root /root/sociallogin \
     && chmod -R 644 /root/sociallogin \
