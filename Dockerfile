@@ -12,7 +12,9 @@ RUN apt-get update && apt-get -y install sudo mc sed && apt-get clean \
     && sed -ri "/DEFAULT_PROVIDERS.*/a 'Tpedu'," \
            /root/sociallogin/lib/Service/ProviderService.php \
     && sed -ri "/Telegram.*/a 'Hybridauth\\\\\\\\Provider\\\\\\\\Tpedu' => \$vendorDir . '/hybridauth/hybridauth/src/Provider/Tpedu.php'," \
-           /root/sociallogin/3rdparty/composer/autoload_classmap.php
+           /root/sociallogin/3rdparty/composer/autoload_classmap.php \
+    && sed -ri "/Telegram.*/a 'Hybridauth\\\\\\\\Provider\\\\\\\\Tpedu' => __DIR__ . '/..' . '/hybridauth/hybridauth/src/Provider/Tpedu.php'," \
+           /root/sociallogin/3rdparty/composer/autoload_static.php
 
 ADD Tpedu.php /root/sociallogin/3rdparty/hybridauth/hybridauth/src/Provider/Tpedu.php
 RUN chmod +x /entrypoint.sh \
