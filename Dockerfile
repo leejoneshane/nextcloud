@@ -4,7 +4,7 @@ ENV ORG meps
 
 ADD docker-entrypoint.sh /entrypoint.sh
 
-RUN apt-get update && apt-get install git sed \
+RUN apt-get update && apt-get install -y git sed \
     && git clone https://github.com/zorn-v/nextcloud-social-login /root/sociallogin \
     && sed -ri "/const DEFAULT_PROVIDERS = [/a 'Tpedu'," \
            /root/sociallogin/lib/Service/ProviderService.php
