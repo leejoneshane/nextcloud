@@ -47,7 +47,7 @@ class Tpedu extends OAuth2
      */
     public function getUserProfile()
     {
-        $response = $this->apiRequest('profile');
+        $response = $this->apiRequest($this->scope);
 
         $data = new Data\Collection($response);
         $org = $data->exists('organization') ? $data->get('organization') : false;
