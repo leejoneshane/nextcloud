@@ -11,6 +11,8 @@ RUN apt-get update && apt-get -y install sudo mc sed && apt-get clean \
     && tar -zxvf release.tar.gz \
     && sed -ri "/DEFAULT_PROVIDERS.*/{n;N;N;N;N;N;N;N;N;N;N;d}" \
            /root/sociallogin/lib/Service/ProviderService.php \
+    && sed -ri "s/\$provider.'\-'/''/g" \
+           /root/sociallogin/lib/Service/ProviderService.php \
     && sed -ri "/DEFAULT_PROVIDERS.*/a 'Tpedu'," \
            /root/sociallogin/lib/Service/ProviderService.php \
     && sed -ri "/Telegram.*/a 'Hybridauth\\\\\\\\Provider\\\\\\\\Tpedu' => \$vendorDir . '/hybridauth/hybridauth/src/Provider/Tpedu.php'," \
