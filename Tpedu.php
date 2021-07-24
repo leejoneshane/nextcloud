@@ -20,6 +20,7 @@ class Tpedu extends OAuth2
     /**
      * {@inheritdoc}
      */
+    protected $info = 'user';
     protected $scope = 'profile';
 
     /**
@@ -66,7 +67,7 @@ class Tpedu extends OAuth2
             $userProfile->data['groups'] = ['學生', $data->get('class')];
         } else {
             $userProfile->identifier = $data->get('teacherId');
-            if ($data->get('isAdmin') == 'yes') {
+            if ($data->get('character') == 'TPECadmin1') {
                 $userProfile->data['groups'][] = 'admin';
             }
             $userProfile->data['groups'][] = '教師';
@@ -75,12 +76,15 @@ class Tpedu extends OAuth2
                 $userProfile->data['groups'][] = $dept->name;
             }
         }
-        $userProfile->displayName = $data->get('name');
+
+        $response = $this->apiRequest($this->info);
+        $userdata = new Data\Collection($response);
+        
+        $userProfile->displayName = $userdata->get('name');
         $userProfile->gender = $data->get('gender');
         $userProfile->language = 'zh_TW';
-        $userProfile->phone = $data->get('mobile');
-        $userProfile->email = $data->get('email');
-        $userProfile->emailVerified = ($data->get('email_verified') == 'true') ? $userProfile->email : '';
+        $userProfile->phone = $userdata->get('mobile');
+        $userProfile->email = $userdata->get('email');
 
         return $userProfile;
     }
