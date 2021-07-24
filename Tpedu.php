@@ -20,8 +20,7 @@ class Tpedu extends OAuth2
     /**
      * {@inheritdoc}
      */
-    protected $info = 'user';
-    protected $scope = 'profile';
+    protected $scope = 'user profile';
 
     /**
      * {@inheritdoc}
@@ -48,7 +47,7 @@ class Tpedu extends OAuth2
      */
     public function getUserProfile()
     {
-        $response = $this->apiRequest($this->scope);
+        $response = $this->apiRequest('profile');
 
         $data = new Data\Collection($response);
         $org = $data->exists('organization') ? $data->get('organization') : false;
@@ -77,7 +76,7 @@ class Tpedu extends OAuth2
             }
         }
 
-        $response = $this->apiRequest($this->info);
+        $response = $this->apiRequest('user');
         $userdata = new Data\Collection($response);
         
         $userProfile->displayName = $userdata->get('name');
