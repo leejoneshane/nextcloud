@@ -23,5 +23,5 @@ RUN apt-get update && apt-get -y install sudo mc sed libmagickcore-6.q16-6-extra
 
 ADD Tpedu.php /root/sociallogin/3rdparty/hybridauth/hybridauth/src/Provider/Tpedu.php
 RUN chmod +x /entrypoint.sh \
-    && chown -R www-data:root /root/sociallogin \
-    && chmod -R 644 /root/sociallogin
+    && chown -R www-data:www-data /root/sociallogin \
+    && chmod -R 755 /root/sociallogin
