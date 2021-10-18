@@ -6,7 +6,7 @@ ENV version v4.8.8
 ADD docker-entrypoint.sh /entrypoint.sh
 
 RUN apt-get update && apt-get -y install sudo mc sed libmagickcore-6.q16-6-extra && apt-get clean \
-    && echo 'memory_limit=-1' > /usr/local/etc/php/conf.d/memory.ini
+    && echo 'memory_limit=-1' > /usr/local/etc/php/conf.d/memory.ini \
     && cd /root \
     && curl -OL https://github.com/zorn-v/nextcloud-social-login/releases/download/${version}/release.tar.gz \
     && tar -zxvf release.tar.gz \
