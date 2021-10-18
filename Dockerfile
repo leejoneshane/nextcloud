@@ -1,7 +1,7 @@
 FROM nextcloud
 
 ENV ORG meps
-ENV version v4.6.18
+ENV version v4.8.8
 
 ADD docker-entrypoint.sh /entrypoint.sh
 
