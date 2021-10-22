@@ -62,10 +62,8 @@ class Tpedu extends OAuth2
         $userProfile = new User\Profile();
 
         if ($data->get('role') == '學生') {
-            $userProfile->identifier = $data->get('uuid');
             $userProfile->data['groups'] = ['學生', $data->get('class')];
         } else {
-            $userProfile->identifier = $data->get('uuid');
             if ($data->get('character') == 'TPECadmin1') {
                 $userProfile->data['groups'][] = 'admin';
             }
@@ -79,6 +77,7 @@ class Tpedu extends OAuth2
         $response = $this->apiRequest('user');
         $userdata = new Data\Collection($response);
 
+        $userProfile->identifier = $userdata->get('uuid');
         $userProfile->displayName = $userdata->get('name');
         $userProfile->gender = $data->get('gender');
         $userProfile->language = 'zh_TW';
